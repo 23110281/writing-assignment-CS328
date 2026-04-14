@@ -1,0 +1,238 @@
+/* ═══════════════════════════════════════════════════════════════
+   COVID-19 Dashboard — Premium Dark Theme
+   ═══════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ── Reset & root ────────────────────────────────────────── */
+:root {
+  --bg-base:      #0a0818;
+  --bg-content:   #110f20;
+  --bg-cell:      #151228;
+  --bg-code:      #0f0d1c;
+  --accent-purple:#7c3aed;
+  --accent-blue:  #2563eb;
+  --accent-cyan:  #06b6d4;
+  --accent-green: #10b981;
+  --text-primary: #e0d7ff;
+  --text-secondary:#a89fd4;
+  --text-muted:   #6b7280;
+  --border:       rgba(124,58,237,0.2);
+  --radius:       12px;
+}
+
+html, body {
+  background-color: var(--bg-base) !important;
+  color: var(--text-primary) !important;
+  font-family: 'Inter', 'Segoe UI', sans-serif !important;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Notebook container ──────────────────────────────────── */
+#notebook-container,
+.container,
+.notebook_app,
+body > div {
+  background: var(--bg-base) !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.jp-Notebook,
+.jp-Cell,
+.cell {
+  background: transparent !important;
+}
+
+/* ── Individual cells ────────────────────────────────────── */
+.jp-Cell,
+div.cell {
+  background: var(--bg-cell) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  margin-bottom: 18px !important;
+  padding: 0 !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.jp-Cell:hover,
+div.cell:hover {
+  border-color: rgba(124,58,237,0.5) !important;
+  box-shadow: 0 0 0 1px rgba(124,58,237,0.15), 0 4px 24px rgba(0,0,0,0.4) !important;
+}
+
+/* ── Code cells ──────────────────────────────────────────── */
+.jp-CodeCell .jp-Cell-inputWrapper,
+div.input_area {
+  background: var(--bg-code) !important;
+  border-radius: var(--radius) var(--radius) 0 0 !important;
+  border-bottom: 1px solid var(--border) !important;
+  padding: 14px 18px !important;
+}
+
+.jp-Editor,
+.CodeMirror,
+.CodeMirror-wrap {
+  background: var(--bg-code) !important;
+  color: #c4b5fd !important;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace !important;
+  font-size: 13.5px !important;
+  line-height: 1.65 !important;
+}
+
+/* ── Execution counter ───────────────────────────────────── */
+.jp-InputPrompt,
+div.prompt.input_prompt {
+  color: var(--accent-purple) !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 12px !important;
+  opacity: 0.8;
+  min-width: 80px;
+}
+
+.jp-OutputPrompt,
+div.prompt.output_prompt {
+  color: var(--accent-cyan) !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 12px !important;
+  opacity: 0.7;
+  min-width: 80px;
+}
+
+/* ── Output area ─────────────────────────────────────────── */
+.jp-Cell-outputWrapper,
+div.output_wrapper,
+div.output_area {
+  background: var(--bg-cell) !important;
+  border-radius: 0 0 var(--radius) var(--radius) !important;
+  padding: 6px 0 !important;
+}
+
+div.output_subarea {
+  background: transparent !important;
+}
+
+/* ── Markdown cells ──────────────────────────────────────── */
+.jp-MarkdownCell .jp-Cell-inputWrapper,
+div.text_cell_render {
+  background: transparent !important;
+  border: none !important;
+  padding: 8px 20px !important;
+}
+
+.jp-MarkdownOutput,
+div.text_cell_render {
+  color: var(--text-primary) !important;
+  font-size: 15px !important;
+  line-height: 1.75 !important;
+}
+
+.jp-MarkdownOutput h1,
+.jp-MarkdownOutput h2,
+.jp-MarkdownOutput h3,
+div.text_cell_render h1,
+div.text_cell_render h2,
+div.text_cell_render h3 {
+  color: var(--text-primary) !important;
+  font-weight: 700;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
+}
+
+/* ── Tables ──────────────────────────────────────────────── */
+table.dataframe,
+.jp-RenderedHTMLCommon table {
+  background: var(--bg-code) !important;
+  border-collapse: collapse !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  font-size: 13px !important;
+  width: 100% !important;
+  font-family: 'JetBrains Mono', monospace !important;
+}
+
+table.dataframe th,
+.jp-RenderedHTMLCommon th {
+  background: rgba(124,58,237,0.2) !important;
+  color: #c4b5fd !important;
+  padding: 10px 14px !important;
+  border: 1px solid var(--border) !important;
+  font-weight: 600;
+  text-align: left;
+}
+
+table.dataframe td,
+.jp-RenderedHTMLCommon td {
+  background: var(--bg-code) !important;
+  color: #d1d5db !important;
+  padding: 8px 14px !important;
+  border: 1px solid rgba(255,255,255,0.05) !important;
+}
+
+table.dataframe tr:hover td,
+.jp-RenderedHTMLCommon tr:hover td {
+  background: rgba(124,58,237,0.08) !important;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────── */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb { background: #3b2d6b; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-purple); }
+
+/* ── Plotly charts ───────────────────────────────────────── */
+.jp-OutputArea-output .plotly-graph-div,
+div.output_area .plotly-graph-div {
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  margin: 8px 0 !important;
+}
+
+/* ── Print output text ───────────────────────────────────── */
+pre,
+.jp-RenderedText pre,
+div.output_text pre {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 13px !important;
+  color: #a5f3fc !important;
+  background: var(--bg-code) !important;
+  padding: 12px 16px !important;
+  border-radius: 8px !important;
+  border-left: 3px solid var(--accent-cyan) !important;
+  line-height: 1.6 !important;
+}
+
+/* ── Toolbar & header ────────────────────────────────────── */
+#header,
+.jp-Toolbar,
+.navbar {
+  background: rgba(10,8,24,0.95) !important;
+  border-bottom: 1px solid var(--border) !important;
+  backdrop-filter: blur(12px);
+}
+
+/* ── Selection highlight ─────────────────────────────────── */
+::selection {
+  background: rgba(124,58,237,0.35);
+  color: #fff;
+}
+
+/* ── Page-level padding ──────────────────────────────────── */
+#notebook,
+.jp-NotebookPanel-notebook {
+  padding: 24px 32px !important;
+  max-width: 1100px !important;
+  margin: 0 auto !important;
+}
+
+/* ── Fade-in animation for cells ─────────────────────────── */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.jp-Cell,
+div.cell {
+  animation: fadeSlideUp 0.35s ease both;
+}
