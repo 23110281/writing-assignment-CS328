@@ -1,48 +1,43 @@
 # CS328 Writing Assignment — COVID-19 Global Analysis
 
-**Team:** Parthiv Patel · Aditya Borate · Srajan Dehariya · Rudra Pratap Singh (23110281)  
+**Team:** Parthiv Patel, Aditya Borate, Srajan Dehariya, Rudra Pratap Singh (23110281)  
 **Course:** CS328 Data Science, 2026 — IIT Gandhinagar
 
 ---
 
-## Overview
+## Dataset
 
-A data-driven analytical report examining the global spread, mortality patterns, and vaccination inequity of the COVID-19 pandemic using WHO and OWID datasets.
+WHO COVID-19 Global dataset (`_data/WHO-COVID-19-global-table-data.csv` and time-series companion files).
 
 ## Structure
 
 ```
-analysis.ipynb          ← main analytical notebook
-data/                   ← WHO and OWID COVID-19 datasets
-report/                 ← rendered HTML report
-  index.html
-  style.css
-  script.js
-requirements.txt
+_notebooks/index.ipynb   ← final analytical notebook (source of truth)
+site/index.html          ← generated static site (served from /site)
+site/style.css           ← minimal stylesheet
+site/script.js           ← sidebar toggle logic
+requirements.txt         ← Python dependencies
 ```
 
-## Viewing the Report Locally
+## Serving Locally
 
 ```bash
-python3 -m http.server 8765 --directory report/
+python3 -m http.server 8765 --directory site/
 ```
 
-Open `http://localhost:8765` in your browser.
+Then open `http://localhost:8765/index.html`.
 
-## Data Sources
+## Regenerating the HTML
 
-- [WHO COVID-19 Global Data](https://covid19.who.int/data)
-- [Our World in Data COVID-19 Dataset](https://github.com/owid/covid-19-data)
-
-## Regenerating the Report
-
-If the notebook is modified, regenerate `report/index.html` with:
+If you modify the notebook and need to regenerate the site:
 
 ```bash
-pip install -r requirements.txt
+# 1. Convert notebook to HTML
 jupyter nbconvert --to html --execute \
-  --ExecutePreprocessor.timeout=300 \
-  --output-dir=report \
-  analysis.ipynb
-mv report/analysis.html report/index.html
+  --ExecutePreprocessor.kernel_name=python3 \
+  --output-dir=site \
+  _notebooks/index.ipynb
+
+# 2. Rename to index.html (nbconvert names it after the notebook file)
+mv site/index.html site/index.html   # already correct if notebook is named index.ipynb
 ```

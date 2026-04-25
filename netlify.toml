@@ -1,3 +1,14 @@
 [build]
   publish = "report"
-  # No build command needed — report/index.html is pre-built and committed
+  # This command will build the site on Netlify
+  command = "pip install -r requirements.txt && jupyter nbconvert --to html --execute --output-dir=report analysis.ipynb --output index.html"
+
+[build.environment]
+  PYTHON_VERSION = "3.8"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    Content-Security-Policy = "frame-ancestors 'none'"
