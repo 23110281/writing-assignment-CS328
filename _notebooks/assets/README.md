@@ -1,1 +1,0 @@
-Place all assets (images, outputs, etc.) in this folder.

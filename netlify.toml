@@ -1,0 +1,3 @@
+[build]
+  publish = "report"
+  # No build command needed — report/index.html is pre-built and committed

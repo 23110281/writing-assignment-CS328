@@ -1,64 +1,48 @@
-# COVID-19 Global Analysis Dashboard | CS328
+# CS328 Writing Assignment — COVID-19 Global Analysis
 
-An interactive data science dashboard analyzing regional distributions, comparative case studies (The Americas vs. India), country-level wave patterns, and vaccination trajectories. Built using global datasets from the World Health Organization (WHO) and Our World in Data (OWID).
-
-## Team Members
-- **Parthiv Patel** (`parthiv.patel@iitgn.ac.in`)
-- **Aditya Borate** (`aditya.borate@iitgn.ac.in`)
-- **Srajan Dehariya** (`srajan.dehariya@iitgn.ac.in`)
-- **Rudra Pratap Singh** (`rudra.pratap@iitgn.ac.in` | 23110281)
+**Team:** Parthiv Patel · Aditya Borate · Srajan Dehariya · Rudra Pratap Singh (23110281)  
+**Course:** CS328 Data Science, 2026 — IIT Gandhinagar
 
 ---
 
-## Running the Demo Locally
+## Overview
 
-This dashboard was generated using an automated Jupyter Notebook (`nbconvert`) pipeline with custom HTML/CSS injections for a highly-polished interactive frontend.
+A data-driven analytical report examining the global spread, mortality patterns, and vaccination inequity of the COVID-19 pandemic using WHO and OWID datasets.
 
-To view the dashboard, you just need to serve the static files locally.
+## Structure
 
-### 1. Requirements
-Ensure you have `python3` installed. We recommend using a virtual environment (`venv`) to keep dependencies isolated if you wish to re-compile the notebook yourself.
+```
+analysis.ipynb          ← main analytical notebook
+data/                   ← WHO and OWID COVID-19 datasets
+report/                 ← rendered HTML report
+  index.html
+  style.css
+  script.js
+requirements.txt
+```
 
-### 2. Setting Up the Virtual Environment
-
-Run the following commands in your terminal from the project root directory:
+## Viewing the Report Locally
 
 ```bash
-# 1. Create the virtual environment
-python3 -m venv venv
+python3 -m http.server 8765 --directory report/
+```
 
-# 2. Activate the virtual environment
-# On Linux / macOS:
-source venv/bin/activate
-# On Windows:
-# venv\Scripts\activate
+Open `http://localhost:8765` in your browser.
 
-# 3. (Optional) Install dependencies if you want to rebuild the notebook
+## Data Sources
+
+- [WHO COVID-19 Global Data](https://covid19.who.int/data)
+- [Our World in Data COVID-19 Dataset](https://github.com/owid/covid-19-data)
+
+## Regenerating the Report
+
+If the notebook is modified, regenerate `report/index.html` with:
+
+```bash
 pip install -r requirements.txt
-```
-
-### 3. Serving the Dashboard
-
-To view the pre-built dashboard, you simply need to start a local web server pointing to the `site/` directory:
-
-```bash
-# Start the HTTP server on port 8765
-python3 -m http.server 8765 --directory site/
-```
-
-Once the server is running, open your web browser and navigate to:
-**[http://localhost:8765](http://localhost:8765)**
-
-*(Note: Use `Ctrl+Shift+R` to perform a hard refresh if old styles appear cached).*
-
-### 4. Rebuilding the Notebook (Development)
-
-If you modify `_notebooks/index.ipynb` and want to re-render the HTML site, you must run the build pipeline within your activated `venv`:
-
-```bash
-# Execute the notebook and convert to raw HTML
-jupyter nbconvert --to html --execute --ExecutePreprocessor.kernel_name=covid_env --out _html/index.html _notebooks/index.ipynb
-
-# The pipeline requires a post-processing script to inject custom CSS/JS (like the Sidebar).
-# Once processed, copy `_html/index.html` into `site/index.html`.
+jupyter nbconvert --to html --execute \
+  --ExecutePreprocessor.timeout=300 \
+  --output-dir=report \
+  analysis.ipynb
+mv report/analysis.html report/index.html
 ```

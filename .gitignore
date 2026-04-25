@@ -86,3 +86,9 @@ bh_unicode_properties.cache
 GitHub.sublime-settings
 © 2022 GitHub, Inc.
 Terms
+
+# Build intermediates
+_html/
+venv/
+__pycache__/
+*.py[cod]
