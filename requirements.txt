@@ -1,3 +1,10 @@
-nbconvert==6.3.0
-jupyter-contrib-nbextensions==0.5.1
-beautifulsoup4==4.10.0
+nbconvert
+jupyter-contrib-nbextensions
+beautifulsoup4
+pandas
+numpy
+plotly
+ipykernel
+nbclient
+traitlets
+ipython

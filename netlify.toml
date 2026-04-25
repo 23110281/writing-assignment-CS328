@@ -1,10 +1,10 @@
 [build]
   publish = "report"
   # This command will build the site on Netlify
-  command = "pip install -r requirements.txt && jupyter nbconvert --to html --execute --output-dir=report analysis.ipynb --output index.html"
+  command = "pip install -r requirements.txt && jupyter nbconvert --to html --execute --ExecutePreprocessor.kernel_name=python3 --output-dir=report analysis.ipynb --output index.html"
 
 [build.environment]
-  PYTHON_VERSION = "3.8"
+  PYTHON_VERSION = "3.11"
 
 [[headers]]
   for = "/*"
