@@ -1,6 +1,6 @@
 # CS328 Writing Assignment — COVID-19 Global Analysis
 
-**Team:** Parthiv Patel, Aditya Borate, Srajan Dehariya, Rudra Pratap Singh (23110281)  
+**Team:** Parthiv Patel (23110237), Aditya Borate (23110065), Srajan Dehariya (23110320), Rudra Pratap Singh (23110281)  
 **Course:** CS328 Data Science, 2026 — IIT Gandhinagar
 
 ---
